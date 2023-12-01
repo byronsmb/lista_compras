@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lista_compras/data/datos_ficticios.dart';
 import 'package:lista_compras/models/producto.dart';
-import 'package:lista_compras/models/screens/agregar_producto.dart';
+import 'package:lista_compras/screens/agregar_producto.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
