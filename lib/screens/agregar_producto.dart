@@ -11,25 +11,33 @@ class AgregarProducto extends StatefulWidget {
 class _AgregarProductoState extends State<AgregarProducto> {
   Categoria _selectedCategoria = Categoria.fruta;
   final _formKey = GlobalKey<FormState>();
+  var _nombre = '';
+  var _cantidad = 1;
 
   void _guardarProducto() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
+      Navigator.of(context).pop(
+        Producto(
+            nombre: _nombre,
+            cantidad: _cantidad,
+            categoria: _selectedCategoria),
+      );
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Agregar producto')),
+      appBar: AppBar(title: const Text('Agregar producto')),
       body: Padding(
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(12),
         child: Form(
           key: _formKey,
           child: Column(
             children: [
               TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   label: Text('Nombre'),
                 ),
                 validator: (value) {
@@ -42,6 +50,9 @@ class _AgregarProductoState extends State<AgregarProducto> {
                   }
                   return null;
                 },
+                onSaved: (newValue) {
+                  _nombre = newValue!;
+                },
               ),
               SizedBox(height: 20),
               Row(
@@ -51,7 +62,7 @@ class _AgregarProductoState extends State<AgregarProducto> {
                       decoration: const InputDecoration(
                         label: Text('Cantidad'),
                       ),
-                      initialValue: '1',
+                      initialValue: _cantidad.toString(),
                       validator: (value) {
                         if (value == null ||
                             value.isEmpty ||
@@ -60,6 +71,10 @@ class _AgregarProductoState extends State<AgregarProducto> {
                           return 'Debe ser entre 1 y 50 caracteres';
                         }
                         return null;
+                      },
+                      keyboardType: TextInputType.number,
+                      onSaved: (newValue) {
+                        _cantidad = int.parse(newValue!);
                       },
                     ),
                   ),
@@ -88,10 +103,9 @@ class _AgregarProductoState extends State<AgregarProducto> {
               Row(
                 children: [
                   TextButton(
-                    onPressed: 
-                        () {
-                            _formKey.currentState!.reset();
-                          },
+                    onPressed: () {
+                      _formKey.currentState!.reset();
+                    },
                     child: const Text(''),
                   ),
                   ElevatedButton(

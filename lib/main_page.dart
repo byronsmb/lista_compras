@@ -11,9 +11,27 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  void _eliminarItem(Producto producto) {
+  void _eliminarProducto(Producto producto) {
     setState(() {
       //_comprasItems.remove(item);
+    });
+  }
+
+  void _agregarProducto() async {
+    final nuevoProducto = await Navigator.of(context).push<Producto>(
+      MaterialPageRoute(
+        builder: (context) {
+          return AgregarProducto();
+        },
+      ),
+    );
+    //no se agrega nuevos valores y solo se regresa
+    if (nuevoProducto == null) {
+      return;
+    }
+
+    setState(() {
+      listaProductos.add(nuevoProducto);
     });
   }
 
@@ -23,14 +41,8 @@ class _MainPageState extends State<MainPage> {
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) {
-                  return AgregarProducto();
-                },
-              ));
-            },
-            icon: Icon(Icons.add),
+            onPressed: _agregarProducto,
+            icon: const Icon(Icons.add),
           ),
         ],
       ),
