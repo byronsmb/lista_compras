@@ -54,7 +54,7 @@ class _AgregarProductoState extends State<AgregarProducto> {
                   _nombre = newValue!;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 children: [
                   Expanded(
