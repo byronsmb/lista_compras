@@ -21,7 +21,7 @@ class _MainPageState extends State<MainPage> {
     final nuevoProducto = await Navigator.of(context).push<Producto>(
       MaterialPageRoute(
         builder: (context) {
-          return AgregarProducto();
+          return const AgregarProducto();
         },
       ),
     );
