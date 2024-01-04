@@ -11,7 +11,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  void _eliminarProducto(Producto producto) {
+  void eliminarProducto(Producto producto) {
     setState(() {
       //_comprasItems.remove(item);
     });
