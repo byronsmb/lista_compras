@@ -73,7 +73,6 @@ class _MainPageState extends State<MainPage> {
             },
             child: ListTile(
               leading: CircleAvatar(
-                // backgroundColor: const Color(0xff764abc),
                 child: Text(index.toString()),
               ),
               title: Text(listaProductos[index].nombre),
