@@ -81,7 +81,7 @@ class _MainPageState extends State<MainPage> {
             ),
           );
         },
-      ), //Center(child: Text('No hay ningun producto agregado')),
+      ),
     );
   }
 }
