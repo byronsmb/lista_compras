@@ -1,6 +1,6 @@
 import 'package:uuid/uuid.dart';
 
-var uuid = Uuid();
+var uuid = const Uuid();
 
 enum Categoria {
   verdura,
